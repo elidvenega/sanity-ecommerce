@@ -13,22 +13,26 @@ import { useStateContext } from "../../context/StateContext";
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
-  const { decQty, incQty, qty, onAdd} = useStateContext();
+  const { decQty, incQty, qty, onAdd } = useStateContext();
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <img src={urlFor(image && image[index])}
-            className="product-detail-image" />
+            <img
+              src={urlFor(image && image[index])}
+              className="product-detail-image"
+            />
           </div>
           <div className="small-images-container">
             {image?.map((item, i) => (
-              <img src={urlFor(item)} 
-              className={i === index ?
-              'small-image selected-image':
-              'small-image'}
-              onMouseEnter={() => setIndex(i)} />
+              <img
+                src={urlFor(item)}
+                className={
+                  i === index ? "small-image selected-image" : "small-image"
+                }
+                onMouseEnter={() => setIndex(i)}
+              />
             ))}
           </div>
         </div>
@@ -62,7 +66,11 @@ const ProductDetails = ({ product, products }) => {
             </p>
           </div>
           <div className="buttons">
-            <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>
+            <button
+              type="button"
+              className="add-to-cart"
+              onClick={() => onAdd(product, qty)}
+            >
               Add To Cart
             </button>
             <button type="button" className="buy-now" onClick="">
@@ -107,8 +115,8 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params: { slug } }) => {
-  const query = `*[_type == "product" && slug
-  .current == '${slug}'][0]`;
+  const query = `*[_type == "product" && slug.
+  current == '${slug}'][0]`;
   const productsQuery = '*[_type == "product"]';
 
   const product = await client.fetch(query);
@@ -120,3 +128,11 @@ export const getStaticProps = async ({ params: { slug } }) => {
 };
 
 export default ProductDetails;
+
+
+
+
+
+
+
+

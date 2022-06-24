@@ -12,7 +12,7 @@ export const StateContext = ({ children }) => {
 
   const onAdd = (product, quantity) => {
     const checkProductInCart = cartItems.find(
-      (item) => item.id === product._id
+      (item) => item._id === product._id
     );
 
     if (checkProductInCart) {
@@ -24,7 +24,7 @@ export const StateContext = ({ children }) => {
       );
 
       const updatedCartItems = cartItems.map((cartProduct) => {
-        if (cartProduct.id === product._id)
+        if (cartProduct._id === product._id)
           return {
             ...cartProduct,
             quantity: cartProduct.quantity + quantity,
