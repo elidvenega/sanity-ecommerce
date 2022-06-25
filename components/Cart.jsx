@@ -29,40 +29,41 @@ const Cart = () => {
           <span className="cart-num-items">({totalQuantities} items)</span>
         </button>
         {cartItems.length < 1 && (
-         <div className="empty-cart">
-           <AiOutlineShopping size={150} />
-          <h3>Your shopping bag is empty</h3>
-          <Link href="/">
-            <button 
-            type="button"
-            onClick={() => setShowCart(false)}
-            className="btn"
-            >
-             Continue Shopping
-            </button>
-          </Link>
-         </div>
+          <div className="empty-cart">
+            <AiOutlineShopping size={150} />
+            <h3>Your shopping bag is empty</h3>
+            <Link href="/">
+              <button
+                type="button"
+                onClick={() => setShowCart(false)}
+                className="btn"
+              >
+                Continue Shopping
+              </button>
+            </Link>
+          </div>
         )}
-      
-       <div className="product-container">
-          {cartItems.length >= 1 && cartItems.map((item) => (
-             <div className="product" key={item._id}>
-                <img src={urlFor(item?.image[0])}
-                className="cart-product-image" />
-             </div> 
-          ))}
-       </div>
+
+        <div className="product-container">
+          {cartItems.length >= 1 &&
+            cartItems.map((item) => (
+              <div className="product" key={item._id}>
+                <img
+                  src={urlFor(item?.image[0])}
+                  className="cart-product-image"
+                />
+                <div className="item-desc">
+                  <div className="flex top">
+                    <h5>{item.name}</h5>
+                    <h4>${item.price}</h4>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
 };
 
 export default Cart;
-
-
-
-
-
-
-
-
